@@ -4,7 +4,7 @@
 //
 //  Created by James Yu on 22/10/2019.
 //  Copyright © 2019 james. All rights reserved.
-//
+//  Version 1.0.2.
 
 import Foundation
 import UIKit
