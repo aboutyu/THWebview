@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import WebKit
 
-class THWebview: UIView, WKNavigationDelegate, WKUIDelegate {
+public class THWebview: UIView, WKNavigationDelegate, WKUIDelegate {
     
     private let webView = WKWebView()
     private let indicator = UIActivityIndicatorView()
@@ -65,16 +65,16 @@ class THWebview: UIView, WKNavigationDelegate, WKUIDelegate {
 extension THWebview {
     
     //-Mark: Delegate when start loading webpage
-    internal func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+    public func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         loadingIndicator(action: true)
     }
     
     //-Mark: Delegate when finish loading webpage
-    internal func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         loadingIndicator(action: false)
     }
     
-    internal func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+    public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         loadingIndicator(action: false)
 //        print("if error:", error.localizedDescription)
     }
