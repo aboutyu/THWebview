@@ -2,8 +2,8 @@
 //  THWebview.swift
 //  THWebview
 //
-//  Created by TAEHUN YU on 22/10/2019.
-//  Copyright © 2019 yutaehun. All rights reserved.
+//  Created by James Yu on 22/10/2019.
+//  Copyright © 2019 james. All rights reserved.
 //
 
 import Foundation

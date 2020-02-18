@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7DF7EB59235E8C2B0051F3C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF7EB58235E8C2B0051F3C6 /* AppDelegate.swift */; };
-		7DF7EB5B235E8C2B0051F3C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF7EB5A235E8C2B0051F3C6 /* SceneDelegate.swift */; };
 		7DF7EB5D235E8C2B0051F3C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF7EB5C235E8C2B0051F3C6 /* ViewController.swift */; };
 		7DF7EB60235E8C2B0051F3C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DF7EB5E235E8C2B0051F3C6 /* Main.storyboard */; };
 		7DF7EB62235E8C2C0051F3C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DF7EB61235E8C2C0051F3C6 /* Assets.xcassets */; };
@@ -19,7 +18,6 @@
 /* Begin PBXFileReference section */
 		7DF7EB55235E8C2B0051F3C6 /* THWebview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = THWebview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DF7EB58235E8C2B0051F3C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7DF7EB5A235E8C2B0051F3C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7DF7EB5C235E8C2B0051F3C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7DF7EB5F235E8C2B0051F3C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7DF7EB61235E8C2C0051F3C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,7 +58,6 @@
 			children = (
 				7DF7EB6C235E8C4D0051F3C6 /* Modules */,
 				7DF7EB58235E8C2B0051F3C6 /* AppDelegate.swift */,
-				7DF7EB5A235E8C2B0051F3C6 /* SceneDelegate.swift */,
 				7DF7EB5C235E8C2B0051F3C6 /* ViewController.swift */,
 				7DF7EB5E235E8C2B0051F3C6 /* Main.storyboard */,
 				7DF7EB61235E8C2C0051F3C6 /* Assets.xcassets */,
@@ -151,7 +148,6 @@
 			files = (
 				7DF7EB5D235E8C2B0051F3C6 /* ViewController.swift in Sources */,
 				7DF7EB59235E8C2B0051F3C6 /* AppDelegate.swift in Sources */,
-				7DF7EB5B235E8C2B0051F3C6 /* SceneDelegate.swift in Sources */,
 				7DF7EB6E235E8C600051F3C6 /* THWebview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,11 +295,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2K3242P3CC;
 				INFOPLIST_FILE = THWebview/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = shop.yutaehun.THWebview.THWebview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -318,11 +315,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2K3242P3CC;
 				INFOPLIST_FILE = THWebview/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = shop.yutaehun.THWebview.THWebview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
