@@ -10,7 +10,7 @@
 # Installation
 
 #### CocoaPods
-Simply add AACarousel to your `Podfile`.
+Simply add THWebview to your `Podfile`.
 
 ```
 pod 'THWebview'
