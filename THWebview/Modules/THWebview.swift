@@ -16,8 +16,8 @@ public class THWebview: UIView, WKNavigationDelegate, WKUIDelegate {
     private let indicator = UIActivityIndicatorView()
     
     // Setting Values
-    var isIndicator: Bool = false
-    var isGestureForworkBack: Bool = false
+    open var isIndicator: Bool = false
+    open var isGestureForworkBack: Bool = false
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
