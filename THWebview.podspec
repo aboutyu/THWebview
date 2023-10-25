@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
 
   spec.name             = "THWebview"
-  spec.version          = "1.0.3"
+  spec.version          = "1.1.0"
   spec.summary          = "Super Easy WKWebView for simple web page."
   spec.description      = "This library is Super Easy WKWebView for simple web page."
   spec.homepage         = "https://github.com/aboutyu/THWebview"

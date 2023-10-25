@@ -85,11 +85,16 @@ extension THWebview {
     
     // Init WebView
     private func initWebview() {
-        webView.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         self.addSubview(webView)
         
-        webView.uiDelegate = self
-        webView.navigationDelegate = self
+        self.webView.uiDelegate = self
+        self.webView.navigationDelegate = self
+        self.webView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.webView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        self.webView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        self.webView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        self.webView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
     
     // Init Indicator
