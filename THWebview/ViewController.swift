@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import THWebview
 
 class ViewController: UIViewController {
 
@@ -23,6 +22,31 @@ class ViewController: UIViewController {
         web.isIndicator = indicator
         web.isGestureForworkBack = gestureBack
         web.loadWeb(url: url)
+        
+        web.action = { [weak self] (action) in
+            guard let self = self else { return }
+            
+            print("action url:", action)
+            switch action {
+            case .started(let navigation): 
+                print("action naviagtion:", navigation)
+                break
+            case .finished(let navigation): 
+                print("action naviagtion:", navigation)
+                break
+            case .failed(let error): 
+                print("action error:", error)
+                break
+            case .closed: 
+                break
+            }
+        }
+        
+        web.decisionHandler = { [weak self] (url, navigation) in
+            guard let self = self else { return }
+            print("decisionHandler url:", url)
+            print("decisionHandler naviagtion:", navigation)
+        }
     }
 
 

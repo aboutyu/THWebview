@@ -9,6 +9,11 @@
 
 # Installation
 
+#### Swift Package Manager
+Simply add THWebview to your `Package Dependancies`.
+
+Add only url 'https://github.com/aboutyu/THWebview.git' into Package Dependancies
+
 #### CocoaPods
 Simply add THWebview to your `Podfile`.
 
@@ -47,6 +52,33 @@ class ViewController: UIViewController {
         web.isIndicator = true
         web.isGestureForworkBack = true
         web.loadWeb(url: "https://m.youtube.com")
+
+        //-MARK: write received delegate patterns
+        web.action = { [weak self] (pattern) in
+            guard let self = self else { return }
+            
+            print("action pattern:", pattern)
+            switch pattern {
+            case .started(let navigation): 
+                print("action naviagtion:", navigation)
+                break
+            case .finished(let navigation): 
+                print("action naviagtion:", navigation)
+                break
+            case .failed(let error): 
+                print("action error:", error)
+                break
+            case .closed: 
+                break
+            }
+        }
+        
+        //-MARK: write received decidePolicyFor delegate
+        web.decisionHandler = { [weak self] (url, navigation) in
+            guard let self = self else { return }
+            print("decisionHandler url:", url)
+            print("decisionHandler naviagtion:", navigation)
+        }
     }
 }
 ```

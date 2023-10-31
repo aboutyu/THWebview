@@ -10,6 +10,13 @@ import Foundation
 import UIKit
 import WebKit
 
+public enum THWebViewAction {
+    case started(_ navigation: WKNavigation?)
+    case finished(_ navigation: WKNavigation?)
+    case failed(_ error: Error)
+    case closed
+}
+
 public class THWebview: UIView, WKNavigationDelegate, WKUIDelegate {
     
     private let webView = WKWebView()
@@ -18,6 +25,8 @@ public class THWebview: UIView, WKNavigationDelegate, WKUIDelegate {
     // Setting Values
     open var isIndicator: Bool = false
     open var isGestureForworkBack: Bool = false
+    public var action: ((THWebViewAction) -> ())? = nil
+    public var decisionHandler: ((URL, WKNavigationAction) -> ())? = nil
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -59,24 +68,76 @@ public class THWebview: UIView, WKNavigationDelegate, WKUIDelegate {
             }
         }
     }
+    
+    private func setAction(type: THWebViewAction, navigation: WKNavigation? = nil, error: Error? = nil) {
+        guard let action = action  else { return }
+        action(type)
+    }
 }
 
 //-Mark: Initialize WKNavigationDelegate
 extension THWebview {
     
+    public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        guard let url = navigationAction.request.url else {
+            decisionHandler(.allow)
+            return
+        }
+        
+        if ["tel"].contains(url.scheme) {
+            UIApplication.shared.open(url, options: [:])
+            decisionHandler(.cancel)
+            return
+        }
+        
+        if ["kakaokompassauth", "kakaolink", "kakaoplus"].contains(url.scheme) && UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            decisionHandler(.cancel)
+            return
+        }
+        
+        if let handler = self.decisionHandler {
+            handler(url, navigationAction)
+        }
+        decisionHandler(.allow)
+    }
+    
+    public func webViewDidClose(_ webView: WKWebView) {
+        setAction(type: .closed)
+    }
+    
     //-Mark: Delegate when start loading webpage
     public func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         loadingIndicator(action: true)
+        setAction(type: .started(navigation))
     }
     
     //-Mark: Delegate when finish loading webpage
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         loadingIndicator(action: false)
+        setAction(type: .finished(navigation))
     }
     
     public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         loadingIndicator(action: false)
-//        print("if error:", error.localizedDescription)
+        setAction(type: .failed(error))
+    }
+    
+    public func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        loadingIndicator(action: false)
+        setAction(type: .failed(error))
+    }
+    
+    public func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
+        loadingIndicator(action: false)
+    }
+    
+    public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        loadingIndicator(action: false)
+    }
+    
+    public func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
+        loadingIndicator(action: false)
     }
 }
 
